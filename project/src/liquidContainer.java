@@ -13,11 +13,11 @@ public class liquidContainer extends Container implements Explosible{
     }
 
     @Override
-    public void loadCargo(double mass) throws Exception {
+    public void loadCargo(double mass) throws OverfillException {
         if(!isSafe) {
             if(this.weight + mass > this.maxWeight/2) {
                 explode();
-                throw OverfillException;
+                throw new OverfillException("You cannot put that much mass!");
             } else {
                 this.weight += mass;
                 System.out.println("Current load: " + this.weight);
@@ -25,7 +25,7 @@ public class liquidContainer extends Container implements Explosible{
         } else {
             if(this.weight + mass > this.maxWeight * .9) {
                 explode();
-                throw OverfillException;
+                throw new OverfillException("You cannot put that much mass!");
             } else {
                 this.weight += mass;
                 System.out.println("Current load: " + this.weight);

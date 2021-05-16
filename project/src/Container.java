@@ -14,8 +14,6 @@ public class Container {
 
     protected double maxWeight;
 
-    protected Exception OverfillException;
-
     protected Container(double weight, double length, double width, double height, double maxWeight) {
         this.weight = weight;
         this.length = length;
@@ -38,9 +36,9 @@ public class Container {
         this.weight = 0;
     }
 
-    protected void loadCargo(double mass) throws Exception {
+    protected void loadCargo(double mass) throws OverfillException {
         if(this.weight + mass > this.maxWeight) {
-            throw OverfillException;
+            throw new OverfillException("");
         }
         this.weight += mass;
         System.out.println("Current mass: " + this.weight);

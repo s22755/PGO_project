@@ -12,10 +12,10 @@ public class GasContainer extends Container implements Explosible {
     }
 
     @Override
-    public void loadCargo(double mass) throws Exception {
+    public void loadCargo(double mass) throws OverfillException {
         if(this.weight + mass > this.maxWeight) {
             explode();
-            throw OverfillException;
+            throw new OverfillException("You cannot put that much mass!");
         }
         this.weight += mass;
     }

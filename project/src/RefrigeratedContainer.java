@@ -5,7 +5,7 @@ public class RefrigeratedContainer extends Container {
     private static String[][] possibleProducts;
     private String product;
     private double temperature;
-    private Exception ProductNotFound;
+
     static {
         //s22755
         possibleProducts = new String[][]{new String[]{"Ryba","2"}, new String[]{"Mrożona pizza","-30"}, new String[]{"Parówki","5"}};
@@ -20,7 +20,7 @@ public class RefrigeratedContainer extends Container {
                 temperature = Double.parseDouble(possibleProduct[1]);
             } else {
                 System.out.println("Please enter product from the list!");
-                throw ProductNotFound;
+                throw new ProductNotFound("Product not found on the list!");
             }
         }
     }
